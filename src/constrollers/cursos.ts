@@ -6,7 +6,7 @@ import { Prisma } from "../../generated/prisma/client";
 export default {
   list: async (request: Request, response: Response) => {
     try {
-      const users = await prisma.alunos.findMany();
+      const users = await prisma.cursos.findMany();
       return response.status(200).json(users);
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError)
@@ -17,13 +17,13 @@ export default {
   },
   create: async (request: Request, response: Response) => {
     try {
-      const { nome, cpf, email, idade } = request.body;
-      const user = await prisma.alunos.create({
+      const { nome,  professor, cargaHoraria, descricao } = request.body;
+      const user = await prisma.cursos.create({
         data: {
           nome,
-          cpf,
-          email,
-          idade,
+          professor,
+          cargaHoraria,
+          descricao,
         },
       });
 
@@ -39,7 +39,7 @@ export default {
   getByid: async (reqeust: Request, response: Response) => {
     try {
       const { id } = reqeust.params;
-      const user = await prisma.alunos.findUnique({
+      const user = await prisma.cursos.findUnique({
         where: {
           id: +id,
         },
@@ -55,13 +55,13 @@ export default {
   update: async (request: Request, response: Response) => {
     try {
       const { id } = request.params;
-      const { nome, idade, email, cpf } = request.body;
-      const user = await prisma.alunos.update({
+      const { nome, professor, cargaHoraria, descricao } = request.body;
+      const user = await prisma.cursos.update({
         data: {
           nome,
-          idade,
-          email,
-          cpf,
+          professor,
+          cargaHoraria,
+          descricao,
         },
         where: { id: +id },
       });
@@ -76,7 +76,7 @@ export default {
   delet: async (request: Request, response: Response) => {
     try {
       const { id } = request.params;
-      const user = await prisma.alunos.delete({
+      const user = await prisma.cursos.delete({
         where: {
           id: +id,
         },
