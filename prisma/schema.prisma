@@ -19,7 +19,9 @@ model Alunos {
   cpf       Int      @unique
   email     String   @unique
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt 
+ cursosAlunos cursosAlunos[]
+
 }
 
 model Cursos {
@@ -30,4 +32,15 @@ model Cursos {
   descricao    String
   createdAt    DateTime @default(now())
   uptadeAt     DateTime @updatedAt
+  cursosAlunos cursosAlunos[]
+}
+
+model cursosAlunos {
+  id        Int      @id @default(autoincrement())
+  alunosId  Int
+  cursosId  Int
+  Alunos    Alunos   @relation(fields: [alunosId], references: [id])
+  Cursos    Cursos   @relation(fields: [cursosId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

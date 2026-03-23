@@ -6,7 +6,10 @@ import { Prisma } from "../../generated/prisma/client";
 export default {
   list: async (request: Request, response: Response) => {
     try {
-      const users = await prisma.cursos.findMany();
+      const users = await prisma.cursos.findMany(
+        {
+        include:{cursosAlunos:true}
+      }); 
       return response.status(200).json(users);
     } catch (e) {
       if (e instanceof Prisma.PrismaClientKnownRequestError)
@@ -89,4 +92,5 @@ export default {
     }
     return response.status(500).json("Unkown error. Try again later");
   },
+
 };

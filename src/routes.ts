@@ -4,7 +4,9 @@ import cursosController from "./constrollers/cursos"
 
 const routes = Router();
 
-routes.get("/", (request, response) => response.status(200).json ({succes: true}));
+routes.get("/", (request, response) => 
+    response.status(200).json 
+    ({succes: true}));
 
 //rotas de alunos
 //1°metodo
@@ -16,12 +18,14 @@ routes.get("/alunos/:id", alunosController.getByid);
 routes.post("/alunos", alunosController.create);
 routes.put("/alunos/:id", alunosController.update);
 routes.delete("/alunos/:id", alunosController.delet);
-//cursos
+//cursos 
 routes.get("/cursos", cursosController.list); 
 routes.get("/cursos/:id", cursosController.getByid);
 routes.post("/cursos", cursosController.create);
 routes.put("/cursos/:id", cursosController.update);
 routes.delete("/cursos/:id", cursosController.delet);
 
+routes.post("/matricular/:id", alunosController.matricular)
+routes.post("/desmatricular/:id", alunosController.desmatricular)
 
 export default routes;
