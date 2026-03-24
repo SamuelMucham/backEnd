@@ -385,8 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Alunos: 'Alunos',
-  Cursos: 'Cursos',
-  cursosAlunos: 'cursosAlunos'
+  Cursos: 'Cursos'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -402,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "alunos" | "cursos" | "cursosAlunos"
+    modelProps: "alunos" | "cursos"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -554,80 +553,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    cursosAlunos: {
-      payload: Prisma.$cursosAlunosPayload<ExtArgs>
-      fields: Prisma.cursosAlunosFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.cursosAlunosFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.cursosAlunosFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>
-        }
-        findFirst: {
-          args: Prisma.cursosAlunosFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.cursosAlunosFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>
-        }
-        findMany: {
-          args: Prisma.cursosAlunosFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>[]
-        }
-        create: {
-          args: Prisma.cursosAlunosCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>
-        }
-        createMany: {
-          args: Prisma.cursosAlunosCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.cursosAlunosCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>[]
-        }
-        delete: {
-          args: Prisma.cursosAlunosDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>
-        }
-        update: {
-          args: Prisma.cursosAlunosUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>
-        }
-        deleteMany: {
-          args: Prisma.cursosAlunosDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.cursosAlunosUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.cursosAlunosUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>[]
-        }
-        upsert: {
-          args: Prisma.cursosAlunosUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$cursosAlunosPayload>
-        }
-        aggregate: {
-          args: Prisma.CursosAlunosAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCursosAlunos>
-        }
-        groupBy: {
-          args: Prisma.cursosAlunosGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CursosAlunosGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.cursosAlunosCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CursosAlunosCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -684,21 +609,10 @@ export const CursosScalarFieldEnum = {
   cargaHoraria: 'cargaHoraria',
   descricao: 'descricao',
   createdAt: 'createdAt',
-  uptadeAt: 'uptadeAt'
-} as const
-
-export type CursosScalarFieldEnum = (typeof CursosScalarFieldEnum)[keyof typeof CursosScalarFieldEnum]
-
-
-export const CursosAlunosScalarFieldEnum = {
-  id: 'id',
-  alunosId: 'alunosId',
-  cursosId: 'cursosId',
-  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type CursosAlunosScalarFieldEnum = (typeof CursosAlunosScalarFieldEnum)[keyof typeof CursosAlunosScalarFieldEnum]
+export type CursosScalarFieldEnum = (typeof CursosScalarFieldEnum)[keyof typeof CursosScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -847,7 +761,6 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   alunos?: Prisma.AlunosOmit
   cursos?: Prisma.CursosOmit
-  cursosAlunos?: Prisma.cursosAlunosOmit
 }
 
 /* Types for Logging */

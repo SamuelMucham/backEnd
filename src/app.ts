@@ -1,16 +1,16 @@
-import express from "express";
-import cors from "cors";
-import routes from "./routes";
+import express  from 'express';
+import cors from "cors"
+import routes from "./routes.js";
 
-//inicializa o express
+// Inicializa o express
 const app = express();
 
-//define regras do servidor
+// Define regras do Servidor
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true}));
 app.use(cors());
 
-// consfigurar as rotas dentro do servidor
+// Configura as rotas no servidor
 app.use(routes);
 
 export default app;

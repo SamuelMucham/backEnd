@@ -1,6 +1,5 @@
-import http from "http";
+import http from "http"
+import app from "./app.js"
 
-import app from "./app";
-const server = http.createServer(app);
-
-server.listen(8080, () => console.log("servidor escutando na porta 8080 ")); 
+const server = http.createServer(app)
+server.listen(8080, () => console.log("servidor executando na porta 8080"))
